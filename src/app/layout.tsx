@@ -1,11 +1,10 @@
+import { Analytics } from '@vercel/analytics/next'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type React from 'react'
+import { Suspense } from 'react'
 import './globals.css'
-
-const inter = Inter({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   title: 'Auroras Inc.',
@@ -18,8 +17,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="dark">
+      <body
+        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
+      >
+        <Suspense fallback={null}>{children}</Suspense>
+        <Analytics />
+      </body>
     </html>
   )
 }

@@ -1,25 +1,23 @@
-'use client'
-
-import { AboutSection } from '../components/about-section'
-import { CtaSection } from '../components/cta-section'
-import { FeaturesSection } from '../components/features-section'
-import { Footer } from '../components/footer'
-import { HeroSection } from '../components/hero-section'
-import { Navbar } from '../components/navbar'
-import { TestimonialsSection } from '../components/testimonials-section'
+import { CallToAction } from '@/components/call-to-action'
+import { Focus } from '@/components/focus'
+import { Footer } from '@/components/footer'
+import { Hero } from '@/components/hero'
+import { Navigation } from '@/components/navigation'
+import { Vision } from '@/components/vision'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background font-sans">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <FeaturesSection />
-        <AboutSection />
-        <TestimonialsSection />
-        <CtaSection />
-      </main>
-      <Footer />
-    </div>
+    <main className="snap-container">
+      <Navigation />
+      <div className="snap-section">
+        <Hero />
+      </div>
+      <div className="snap-section">
+        <Vision />
+        <Focus />
+        <CallToAction />
+        <Footer />
+      </div>
+    </main>
   )
 }
