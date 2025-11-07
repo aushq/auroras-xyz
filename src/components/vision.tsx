@@ -53,7 +53,7 @@ export function Vision() {
             }`}
           >
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">
-              At Nexus, we believe gaming is more than entertainment—it's a
+              At Auroras, we believe gaming is more than entertainment—it's a
               medium for connection, creativity, and cultural impact. We're
               building a studio where bold ideas flourish and talented
               individuals thrive.
