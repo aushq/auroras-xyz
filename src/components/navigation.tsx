@@ -1,27 +1,27 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/80 backdrop-blur-lg border-b border-border'
-          : 'bg-transparent'
+          ? "bg-background/80 backdrop-blur-lg border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +30,7 @@ export function Navigation() {
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br  rounded-lg">
+            <div className="w-8 h-8 sm:w-8 sm:h-8 bg-gradient-to-br  rounded-lg">
               <Image
                 src="/logo.png"
                 width={40}
@@ -40,7 +40,7 @@ export function Navigation() {
               />
             </div>
             <span className="text-lg sm:text-xl font-bold tracking-tight">
-              Auroras Inc.
+              Auroras
             </span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
@@ -63,5 +63,5 @@ export function Navigation() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

@@ -1,73 +1,73 @@
-'use client'
+"use client";
 
-import { ArrowRight, Briefcase, Clock, MapPin } from 'lucide-react'
-import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
-import { Footer } from '@/components/footer'
-import { Navigation } from '@/components/navigation'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { ArrowRight, Briefcase, Clock, MapPin } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const jobOpenings = [
   {
-    title: 'Senior Game Designer',
-    department: 'Design',
-    location: 'East Asia',
-    type: 'Full-time',
+    title: "Senior Game Designer",
+    department: "Design",
+    location: "Global",
+    type: "Full-time",
     description:
-      'Lead the creative vision for our next-generation gaming experiences. Shape gameplay mechanics, narrative design, and player engagement systems.',
+      "Lead the creative vision for our next-generation gaming experiences. Shape gameplay mechanics, narrative design, and player engagement systems.",
   },
   {
-    title: 'Gameplay Programmer',
-    department: 'Engineering',
-    location: 'East Asia',
-    type: 'Full-time',
+    title: "Gameplay Programmer",
+    department: "Engineering",
+    location: "Global",
+    type: "Full-time",
     description:
-      'Bring game mechanics to life. Implement responsive controls, AI systems, and create the core gameplay experiences players will love.',
+      "Bring game mechanics to life. Implement responsive controls, AI systems, and create the core gameplay experiences players will love.",
   },
   {
-    title: 'Graphics Artist',
-    department: 'Art',
-    location: 'East Asia',
-    type: 'Full-time',
+    title: "Graphics Artist",
+    department: "Art",
+    location: "Global",
+    type: "Full-time",
     description:
-      'Create stunning visual assets. Design characters, environments, and UI elements that captivate and immerse players.',
+      "Create stunning visual assets. Design characters, environments, and UI elements that captivate and immerse players.",
   },
   {
-    title: 'Global Marketing Specialist',
-    department: 'Marketing',
-    location: 'East Asia',
-    type: 'Full-time',
+    title: "Global Marketing Specialist",
+    department: "Marketing",
+    location: "Global",
+    type: "Full-time",
     description:
-      'Drive our global marketing campaigns. Develop strategies to increase brand awareness and player acquisition across diverse markets.',
+      "Drive our global marketing campaigns. Develop strategies to increase brand awareness and player acquisition across diverse markets.",
   },
-]
+];
 
 export default function JobsPage() {
-  const [visibleCards, setVisibleCards] = useState<number[]>([])
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observers = cardRefs.current.map((ref, index) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleCards(prev => [...new Set([...prev, index])])
+            setVisibleCards((prev) => [...new Set([...prev, index])]);
           }
         },
-        { threshold: 0.1 },
-      )
+        { threshold: 0.1 }
+      );
 
-      if (ref) observer.observe(ref)
-      return observer
-    })
+      if (ref) observer.observe(ref);
+      return observer;
+    });
 
     return () => {
-      observers.forEach(observer => {
-        observer.disconnect()
-      })
-    }
-  }, [])
+      observers.forEach((observer) => {
+        observer.disconnect();
+      });
+    };
+  }, []);
 
   return (
     <main className="min-h-screen">
@@ -144,13 +144,13 @@ export default function JobsPage() {
               {jobOpenings.map((job, index) => (
                 <div
                   key={index}
-                  ref={el => {
-                    cardRefs.current[index] = el
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
                   }}
                   className={`transition-all duration-700 ${
                     visibleCards.includes(index)
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-10'
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-10"
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
@@ -167,7 +167,9 @@ export default function JobsPage() {
                           </p>
                         </div>
                         <Link
-                          href="mailto:recruit@auroras.xyz"
+                          href={`mailto:recruit@auroras.xyz?subject=${encodeURIComponent(
+                            `Application for ${job.title}`
+                          )}`}
                           className="self-start"
                         >
                           <Button
@@ -235,5 +237,5 @@ export default function JobsPage() {
 
       <Footer />
     </main>
-  )
+  );
 }

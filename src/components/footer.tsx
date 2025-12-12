@@ -11,10 +11,10 @@ export function Footer() {
           </div>
 
           <div className="text-sm text-muted-foreground text-center sm:text-right">
-            © 2025 Aurora Inc. All rights reserved.
+            © 2025 Auroras L.L.C. All rights reserved.
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
